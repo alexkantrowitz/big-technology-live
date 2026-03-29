@@ -1,0 +1,1161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <title>Big Technology Live — June 18 · SF Jazz</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:         #0b0d1f;
+      --bg-2:       #10132a;
+      --bg-3:       #161933;
+      --blue:       #5060b0;
+      --blue-light: #7080d0;
+      --gold:       #f5a623;
+      --gold-dim:   #c8861a;
+      --gold-light: #ffd166;
+      --white:      #ffffff;
+      --muted:      rgba(255,255,255,0.5);
+      --dim:        rgba(255,255,255,0.25);
+      --border:     rgba(255,255,255,0.08);
+      --border-b:   rgba(80,96,176,0.3);
+      --radius:     14px;
+      --radius-lg:  22px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--white);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 48px;
+      background: rgba(11,13,31,0.85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--white); }
+
+    .nav-cta {
+      background: var(--blue);
+      color: var(--white);
+      border: none;
+      padding: 10px 22px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .nav-cta:hover { background: var(--blue-light); transform: translateY(-1px); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 140px 48px 100px;
+      position: relative;
+      overflow: hidden;
+      background: var(--bg);
+    }
+
+    /* Iridescent blob */
+    .hero-blob {
+      position: absolute;
+      right: -80px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 620px;
+      height: 620px;
+      border-radius: 40% 60% 55% 45% / 50% 45% 55% 50%;
+      background:
+        radial-gradient(ellipse at 25% 35%, rgba(100, 180, 255, 0.9) 0%, transparent 45%),
+        radial-gradient(ellipse at 75% 25%, rgba(180, 100, 255, 0.85) 0%, transparent 45%),
+        radial-gradient(ellipse at 60% 75%, rgba(255, 100, 150, 0.8) 0%, transparent 45%),
+        radial-gradient(ellipse at 30% 70%, rgba(255, 200, 60, 0.75) 0%, transparent 45%),
+        radial-gradient(ellipse at 80% 60%, rgba(60, 220, 180, 0.75) 0%, transparent 45%),
+        radial-gradient(ellipse at 50% 50%, rgba(120, 140, 255, 0.6) 0%, transparent 60%);
+      filter: blur(1px);
+      animation: blobmorph 10s ease-in-out infinite alternate;
+      opacity: 0.88;
+    }
+
+    .hero-blob::after {
+      content: '';
+      position: absolute;
+      inset: 8px;
+      border-radius: inherit;
+      background:
+        radial-gradient(ellipse at 50% 20%, rgba(255,255,255,0.3) 0%, transparent 40%),
+        radial-gradient(ellipse at 80% 80%, rgba(255,255,255,0.15) 0%, transparent 30%);
+      mix-blend-mode: screen;
+    }
+
+    @keyframes blobmorph {
+      0%   { border-radius: 40% 60% 55% 45% / 50% 45% 55% 50%; }
+      33%  { border-radius: 55% 45% 40% 60% / 45% 55% 45% 55%; }
+      66%  { border-radius: 45% 55% 60% 40% / 55% 40% 60% 45%; }
+      100% { border-radius: 60% 40% 45% 55% / 40% 60% 40% 60%; }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 700px;
+    }
+
+    .hero-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 28px;
+    }
+
+    .hero-title {
+      font-size: clamp(64px, 9vw, 120px);
+      font-weight: 900;
+      line-height: 0.92;
+      letter-spacing: -0.03em;
+      text-transform: uppercase;
+      margin-bottom: 0;
+    }
+
+    .hero-title-accent {
+      color: var(--gold);
+      display: block;
+    }
+
+    .hero-meta-block {
+      position: absolute;
+      bottom: 80px;
+      right: 48px;
+      text-align: right;
+      z-index: 2;
+    }
+
+    .hero-meta-item {
+      margin-bottom: 28px;
+    }
+
+    .hero-meta-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    .hero-meta-value {
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+
+    .hero-actions {
+      margin-top: 48px;
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: #0b0d1f;
+      border: none;
+      padding: 16px 36px;
+      border-radius: 999px;
+      font-size: 16px;
+      font-weight: 800;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+    }
+
+    .btn-primary:hover {
+      background: var(--gold-dim);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(245,166,35,0.35);
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,0.08);
+      color: var(--white);
+      border: 1px solid rgba(255,255,255,0.18);
+      padding: 16px 36px;
+      border-radius: 999px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .btn-secondary:hover {
+      border-color: rgba(255,255,255,0.4);
+      background: rgba(255,255,255,0.13);
+    }
+
+    /* ── ABOUT STRIP ── */
+    .about {
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+      padding: 100px 48px;
+      text-align: center;
+    }
+
+    .about-title {
+      font-size: clamp(32px, 4vw, 56px);
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      max-width: 820px;
+      margin: 0 auto 20px;
+    }
+
+    .about-divider {
+      width: 48px;
+      height: 3px;
+      background: var(--gold);
+      margin: 24px auto 28px;
+      border-radius: 2px;
+    }
+
+    .about-sub {
+      font-size: 17px;
+      color: var(--muted);
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.75;
+    }
+
+    .about-sub strong { color: var(--gold); font-weight: 600; }
+
+    /* ── STATS ── */
+    .stats-strip {
+      display: flex;
+      justify-content: center;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: var(--bg-2);
+    }
+
+    .stat {
+      flex: 1;
+      min-width: 160px;
+      padding: 40px 24px;
+      text-align: center;
+      border-right: 1px solid var(--border);
+    }
+
+    .stat:last-child { border-right: none; }
+
+    .stat-number {
+      font-size: 44px;
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .stat-label {
+      font-size: 11px;
+      color: var(--muted);
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    /* ── FEATURED SPEAKER ── */
+    .featured-wrap {
+      background: var(--bg-2);
+      padding: 100px 48px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .featured-inner { max-width: 1100px; margin: 0 auto; }
+
+    .section-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 40px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    .featured-card {
+      display: grid;
+      grid-template-columns: 380px 1fr;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid rgba(80,96,176,0.35);
+      position: relative;
+    }
+
+    .featured-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(80,96,176,0.08) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .featured-photo {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(160deg, #1a1f3a 0%, #0d1020 100%);
+    }
+
+    .featured-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+      min-height: 460px;
+    }
+
+    .keynote-badge {
+      position: absolute;
+      top: 18px; left: 18px;
+      z-index: 2;
+      background: var(--gold);
+      color: #0b0d1f;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border-radius: 999px;
+    }
+
+    .featured-info {
+      padding: 56px 56px 48px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background: var(--bg-3);
+      position: relative;
+      z-index: 2;
+    }
+
+    .featured-role {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 14px;
+    }
+
+    .featured-name {
+      font-size: clamp(40px, 5vw, 64px);
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      line-height: 0.95;
+      margin-bottom: 12px;
+    }
+
+    .featured-org {
+      font-size: 18px;
+      color: var(--muted);
+      font-weight: 500;
+      margin-bottom: 24px;
+    }
+
+    .featured-bio {
+      font-size: 16px;
+      color: var(--muted);
+      line-height: 1.75;
+      max-width: 460px;
+      margin-bottom: 32px;
+    }
+
+    .tag-row { display: flex; flex-wrap: wrap; gap: 8px; }
+
+    .tag {
+      background: rgba(80,96,176,0.18);
+      border: 1px solid rgba(80,96,176,0.4);
+      color: var(--blue-light);
+      font-size: 12px;
+      font-weight: 600;
+      padding: 5px 14px;
+      border-radius: 999px;
+      letter-spacing: 0.04em;
+    }
+
+    /* ── SPEAKERS SECTION ── */
+    .speakers-section {
+      background: var(--bg);
+      padding: 100px 48px;
+    }
+
+    .speakers-inner { max-width: 1100px; margin: 0 auto; }
+
+    .speakers-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .speakers-title {
+      font-size: clamp(32px, 4vw, 52px);
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      margin-bottom: 0;
+    }
+
+    .speakers-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 24px;
+      margin-bottom: 32px;
+    }
+
+    .speaker-card {
+      text-align: center;
+    }
+
+    .speaker-photo-box {
+      width: 100%;
+      aspect-ratio: 1;
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: linear-gradient(135deg, #3a2a8c 0%, #5040b0 100%);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 36px;
+      font-weight: 900;
+      color: rgba(255,255,255,0.3);
+      letter-spacing: -0.02em;
+    }
+
+    .speaker-card-name {
+      font-size: 17px;
+      font-weight: 700;
+      margin-bottom: 3px;
+      letter-spacing: -0.02em;
+    }
+
+    .speaker-card-title {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 2px;
+    }
+
+    .speaker-card-org {
+      font-size: 13px;
+      color: var(--gold);
+      font-weight: 600;
+    }
+
+    .speakers-more {
+      text-align: center;
+      font-size: 15px;
+      font-style: italic;
+      color: var(--dim);
+      margin-top: 8px;
+    }
+
+    /* ── SCHEDULE ── */
+    .schedule-section {
+      background: var(--bg-2);
+      padding: 100px 48px;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .schedule-inner { max-width: 1100px; margin: 0 auto; }
+
+    .schedule-header { margin-bottom: 52px; }
+
+    .schedule-title {
+      font-size: clamp(32px, 4vw, 52px);
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      margin-bottom: 8px;
+    }
+
+    .schedule-sub {
+      font-size: 16px;
+      color: var(--muted);
+    }
+
+    .schedule-list { display: flex; flex-direction: column; gap: 3px; }
+
+    .schedule-item {
+      display: grid;
+      grid-template-columns: 140px 1fr auto;
+      align-items: center;
+      gap: 24px;
+      padding: 22px 28px;
+      background: rgba(255,255,255,0.04);
+      border-radius: var(--radius);
+      border: 1px solid transparent;
+      transition: border-color 0.2s, background 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .schedule-item::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 3px;
+      background: transparent;
+      border-radius: 0 2px 2px 0;
+      transition: background 0.2s;
+    }
+
+    .schedule-item:hover { border-color: rgba(80,96,176,0.3); background: rgba(255,255,255,0.06); }
+    .schedule-item:hover::before { background: var(--blue); }
+    .schedule-item.keynote-row { border-color: rgba(245,166,35,0.3); background: rgba(245,166,35,0.04); }
+    .schedule-item.keynote-row::before { background: var(--gold); }
+
+    .schedule-time {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+    }
+
+    .schedule-session-title {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 3px;
+    }
+
+    .schedule-speaker {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .schedule-speaker.hl { color: var(--gold-light); font-weight: 600; }
+
+    .stype {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 4px 11px;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+
+    .stype-keynote { background: rgba(245,166,35,0.15); color: var(--gold); }
+    .stype-talk    { background: rgba(255,255,255,0.07); color: var(--muted); }
+    .stype-panel   { background: rgba(80,96,176,0.2); color: var(--blue-light); }
+    .stype-social  { background: rgba(255,255,255,0.04); color: var(--dim); }
+
+    /* ── VENUE ── */
+    .venue-section {
+      background: var(--bg);
+      padding: 100px 48px;
+    }
+
+    .venue-inner { max-width: 1100px; margin: 0 auto; }
+
+    .venue-card {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: var(--bg-3);
+    }
+
+    .venue-info { padding: 52px; }
+
+    .venue-name {
+      font-size: 38px;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      margin-bottom: 8px;
+    }
+
+    .venue-address {
+      font-size: 16px;
+      color: var(--muted);
+      margin-bottom: 36px;
+      line-height: 1.5;
+    }
+
+    .venue-details { display: flex; flex-direction: column; gap: 14px; }
+
+    .venue-detail {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 15px;
+      color: rgba(255,255,255,0.65);
+    }
+
+    .venue-icon {
+      width: 36px; height: 36px;
+      border-radius: 8px;
+      background: rgba(80,96,176,0.15);
+      border: 1px solid rgba(80,96,176,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 16px;
+    }
+
+    .venue-map {
+      min-height: 320px;
+      background: var(--bg-2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .venue-map-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(80,96,176,0.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(80,96,176,0.07) 1px, transparent 1px);
+      background-size: 28px 28px;
+    }
+
+    .venue-map-pin {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .venue-map-pin div:first-child { font-size: 44px; margin-bottom: 8px; opacity: 0.5; }
+
+    /* ── REGISTER ── */
+    .register-section {
+      background: var(--bg);
+      padding: 100px 48px 120px;
+    }
+
+    .register-inner { max-width: 900px; margin: 0 auto; }
+
+    .register-card {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      padding: 80px 60px;
+      text-align: center;
+      position: relative;
+    }
+
+    /* Holographic gradient background for the card */
+    .register-card-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 15% 50%, rgba(80, 60, 180, 0.9) 0%, transparent 50%),
+        radial-gradient(ellipse at 85% 30%, rgba(160, 60, 220, 0.8) 0%, transparent 45%),
+        radial-gradient(ellipse at 60% 90%, rgba(220, 60, 120, 0.7) 0%, transparent 45%),
+        radial-gradient(ellipse at 40% 10%, rgba(60, 140, 220, 0.7) 0%, transparent 45%),
+        radial-gradient(ellipse at 90% 80%, rgba(245, 166, 35, 0.5) 0%, transparent 40%),
+        linear-gradient(135deg, #1a1535 0%, #0d0a20 100%);
+      z-index: 0;
+    }
+
+    .register-card-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(10, 8, 28, 0.45);
+    }
+
+    .register-card > * { position: relative; z-index: 1; }
+
+    .register-title {
+      font-size: clamp(36px, 5vw, 60px);
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      margin-bottom: 20px;
+      line-height: 1.05;
+    }
+
+    .register-sub {
+      font-size: 17px;
+      color: rgba(255,255,255,0.7);
+      max-width: 520px;
+      margin: 0 auto 40px;
+      line-height: 1.7;
+    }
+
+    .btn-register {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--blue) 0%, #8060d0 100%);
+      color: var(--white);
+      border: none;
+      padding: 18px 48px;
+      border-radius: 999px;
+      font-size: 17px;
+      font-weight: 800;
+      cursor: pointer;
+      text-decoration: none;
+      transition: opacity 0.2s, transform 0.15s, box-shadow 0.2s;
+      letter-spacing: 0.01em;
+    }
+
+    .btn-register:hover {
+      opacity: 0.9;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 32px rgba(80,96,176,0.45);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--bg-2);
+      border-top: 1px solid var(--border);
+      padding: 44px 48px 36px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-logo {
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 26px;
+      list-style: none;
+    }
+
+    .footer-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 13px;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--white); }
+
+    .footer-copy { font-size: 13px; color: var(--dim); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 16px 20px; }
+      .nav-links { display: none; }
+
+      .hero { padding: 120px 24px 200px; }
+      .hero-blob { width: 340px; height: 340px; right: -60px; opacity: 0.5; }
+      .hero-meta-block { right: 24px; bottom: 40px; }
+      .hero-meta-value { font-size: 18px; }
+
+      .about, .featured-wrap, .speakers-section,
+      .schedule-section, .venue-section, .register-section { padding: 72px 24px; }
+
+      .featured-card { grid-template-columns: 1fr; }
+      .featured-photo img { min-height: 300px; }
+      .featured-info { padding: 36px 28px; }
+
+      .venue-card { grid-template-columns: 1fr; }
+      .venue-info { padding: 36px 28px; }
+      .venue-map { min-height: 180px; }
+
+      .schedule-item { grid-template-columns: 110px 1fr; }
+      .stype { display: none; }
+
+      .register-card { padding: 56px 28px; }
+
+      footer { flex-direction: column; padding: 36px 24px; text-align: center; }
+      .footer-links { flex-wrap: wrap; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- PASSWORD GATE -->
+  <div id="password-gate" style="
+    position: fixed; inset: 0; z-index: 9999;
+    background: #0b0d1f;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Inter', -apple-system, sans-serif;
+  ">
+    <div style="text-align: center; max-width: 360px; padding: 0 24px;">
+      <div style="font-size:12px; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:#f5a623; margin-bottom:20px;">Big Technology Live</div>
+      <div style="font-size:28px; font-weight:900; letter-spacing:-0.03em; margin-bottom:8px;">Preview Access</div>
+      <div style="font-size:15px; color:rgba(255,255,255,0.5); margin-bottom:32px;">Enter the password to continue.</div>
+      <input id="pw-input" type="password" placeholder="Password" style="
+        width:100%; padding:14px 18px; border-radius:10px;
+        background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.15);
+        color:#fff; font-size:16px; outline:none; margin-bottom:12px;
+        font-family: inherit;
+      " onkeydown="if(event.key==='Enter') checkPw()" />
+      <div id="pw-error" style="color:#ff6b6b; font-size:13px; min-height:18px; margin-bottom:12px;"></div>
+      <button onclick="checkPw()" style="
+        width:100%; padding:14px; border-radius:999px;
+        background:#f5a623; border:none; color:#0b0d1f;
+        font-size:16px; font-weight:800; cursor:pointer;
+        font-family: inherit;
+      ">Enter</button>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      // Change 'bigtechnology' to whatever password you want
+      var PASSWORD = 'bigtechnology';
+      if (sessionStorage.getItem('btl_auth') === '1') {
+        document.getElementById('password-gate').style.display = 'none';
+      }
+      window.checkPw = function() {
+        var val = document.getElementById('pw-input').value;
+        if (val === PASSWORD) {
+          sessionStorage.setItem('btl_auth', '1');
+          document.getElementById('password-gate').style.display = 'none';
+        } else {
+          document.getElementById('pw-error').textContent = 'Incorrect password. Try again.';
+          document.getElementById('pw-input').value = '';
+          document.getElementById('pw-input').focus();
+        }
+      };
+    })();
+  </script>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo">Big Technology Live</div>
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a href="#speakers">Speakers</a></li>
+        <li><a href="#schedule">Schedule</a></li>
+        <li><a href="#venue">Venue</a></li>
+      </ul>
+      <a href="#register" class="nav-cta">Register Now</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-blob"></div>
+
+    <div class="hero-content">
+      <div class="hero-eyebrow">June 18, 2026 &nbsp;·&nbsp; SF Jazz &nbsp;·&nbsp; San Francisco</div>
+      <h1 class="hero-title">
+        Big<br>
+        <span class="hero-title-accent">Technology</span>
+        Live
+      </h1>
+      <div class="hero-actions">
+        <a href="#register" class="btn-primary">Secure Your Spot</a>
+        <a href="#speakers" class="btn-secondary">View Speakers</a>
+      </div>
+    </div>
+
+    <div class="hero-meta-block">
+      <div class="hero-meta-item">
+        <div class="hero-meta-label">When</div>
+        <div class="hero-meta-value">June 18</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="hero-meta-label">Where</div>
+        <div class="hero-meta-value">SF Jazz,<br>San Francisco</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="hero-meta-label">Time</div>
+        <div class="hero-meta-value">12:30 – 6:30 PM</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <div class="about">
+    <h2 class="about-title">The conference about what's next in technology.</h2>
+    <div class="about-divider"></div>
+    <p class="about-sub">
+      Join <strong>founders</strong>, <strong>investors</strong>, and <strong>technology leaders</strong> for a day of keynotes, panels, and conversations at the intersection of AI and society.
+    </p>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats-strip">
+    <div class="stat"><div class="stat-number">12+</div><div class="stat-label">Speakers</div></div>
+    <div class="stat"><div class="stat-number">1</div><div class="stat-label">Day</div></div>
+    <div class="stat"><div class="stat-number">600</div><div class="stat-label">Attendees</div></div>
+    <div class="stat"><div class="stat-number">8</div><div class="stat-label">Sessions</div></div>
+  </div>
+
+  <!-- FEATURED SPEAKER -->
+  <div class="featured-wrap" id="speakers">
+    <div class="featured-inner">
+      <div class="section-label">Featured Speaker</div>
+      <div class="featured-card">
+        <div class="featured-photo">
+          <img src="greg-brockman.jpg" alt="Greg Brockman" />
+          <div class="keynote-badge">Keynote Speaker</div>
+        </div>
+        <div class="featured-info">
+          <div class="featured-role">President &amp; Co-founder · OpenAI</div>
+          <div class="featured-name">Greg<br>Brockman</div>
+          <div class="featured-org">OpenAI</div>
+          <p class="featured-bio">Greg Brockman co-founded OpenAI and has helped shape the frontier of AI research and deployment — from the earliest days through the releases of GPT-4, DALL·E, and ChatGPT. He'll share his perspective on where AI is heading and what it takes to build at the edge of the possible.</p>
+          <div class="tag-row">
+            <span class="tag">AGI</span>
+            <span class="tag">Large Language Models</span>
+            <span class="tag">AI Safety</span>
+            <span class="tag">Startups</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MORE SPEAKERS -->
+  <div class="speakers-section">
+    <div class="speakers-inner">
+      <div class="speakers-header">
+        <h2 class="speakers-title">Speakers Include</h2>
+      </div>
+      <div class="speakers-grid">
+        <div class="speaker-card">
+          <div class="speaker-photo-box">TBA</div>
+          <div class="speaker-card-name">Speaker TBA</div>
+          <div class="speaker-card-title">Title</div>
+          <div class="speaker-card-org">Company</div>
+        </div>
+        <div class="speaker-card">
+          <div class="speaker-photo-box">TBA</div>
+          <div class="speaker-card-name">Speaker TBA</div>
+          <div class="speaker-card-title">Title</div>
+          <div class="speaker-card-org">Company</div>
+        </div>
+        <div class="speaker-card">
+          <div class="speaker-photo-box">TBA</div>
+          <div class="speaker-card-name">Speaker TBA</div>
+          <div class="speaker-card-title">Title</div>
+          <div class="speaker-card-org">Company</div>
+        </div>
+        <div class="speaker-card">
+          <div class="speaker-photo-box">TBA</div>
+          <div class="speaker-card-name">Speaker TBA</div>
+          <div class="speaker-card-title">Title</div>
+          <div class="speaker-card-org">Company</div>
+        </div>
+        <div class="speaker-card">
+          <div class="speaker-photo-box">TBA</div>
+          <div class="speaker-card-name">Speaker TBA</div>
+          <div class="speaker-card-title">Title</div>
+          <div class="speaker-card-org">Company</div>
+        </div>
+      </div>
+      <div class="speakers-more">More speakers to be announced.</div>
+    </div>
+  </div>
+
+  <!-- SCHEDULE -->
+  <div class="schedule-section" id="schedule">
+    <div class="schedule-inner">
+      <div class="schedule-header">
+        <div class="section-label">June 18, 2026</div>
+        <div class="schedule-title">Day Schedule</div>
+        <div class="schedule-sub">One full day at SF Jazz.</div>
+      </div>
+      <div class="schedule-list">
+
+        <div class="schedule-item">
+          <div class="schedule-time">12:30 PM</div>
+          <div class="schedule-content">
+            <div class="schedule-session-title">Doors Open &amp; Registration</div>
+            <div class="schedule-speaker">Coffee, networking, and badge pickup</div>
+          </div>
+          <div class="stype stype-social">Doors</div>
+        </div>
+
+        <div class="schedule-item">
+          <div class="schedule-time">1:00 PM</div>
+          <div class="schedule-content">
+            <div class="schedule-session-title">Opening Remarks</div>
+            <div class="schedule-speaker">Conference organizers</div>
+          </div>
+          <div class="stype stype-talk">Talk</div>
+        </div>
+
+        <div class="schedule-item keynote-row">
+          <div class="schedule-time">1:30 PM</div>
+          <div class="schedule-content">
+            <div class="schedule-session-title">Keynote: Building at the Frontier</div>
+            <div class="schedule-speaker hl">Greg Brockman · OpenAI</div>
+          </div>
+          <div class="stype stype-keynote">Keynote</div>
+        </div>
+
+        <div class="schedule-item">
+          <div class="schedule-time">2:30 PM</div>
+          <div class="schedule-content">
+            <div class="schedule-session-title">Session TBA</div>
+            <div class="schedule-speaker">Speaker TBA</div>
+          </div>
+          <div class="stype stype-talk">Talk</div>
+        </div>
+
+        <div class="schedule-item">
+          <div class="schedule-time">3:30 PM</div>
+          <div class="schedule-content">
+            <div class="schedule-session-title">Panel: Technology in the Real World</div>
+            <div class="schedule-speaker">Panelists TBA</div>
+          </div>
+          <div class="stype stype-panel">Panel</div>
+        </div>
+
+        <div class="schedule-item">
+          <div class="schedule-time">4:30 – 5:30 PM</div>
+          <div class="schedule-content">
+            <div class="schedule-session-title">Closing Fireside Chat</div>
+            <div class="schedule-speaker">Speakers TBA</div>
+          </div>
+          <div class="stype stype-panel">Fireside</div>
+        </div>
+
+        <div class="schedule-item">
+          <div class="schedule-time">5:30 – 6:30 PM</div>
+          <div class="schedule-content">
+            <div class="schedule-session-title">Happy Hour</div>
+            <div class="schedule-speaker">Drinks, bites, and open conversations</div>
+          </div>
+          <div class="stype stype-social">Social</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- VENUE -->
+  <div class="venue-section" id="venue">
+    <div class="venue-inner">
+      <div class="section-label">Location</div>
+      <div class="venue-card">
+        <div class="venue-info">
+          <div class="venue-name">SF Jazz</div>
+          <div class="venue-address">201 Franklin St<br>San Francisco, CA 94102</div>
+          <div class="venue-details">
+            <div class="venue-detail"><div class="venue-icon">🚇</div><span>BART accessible — Civic Center station</span></div>
+            <div class="venue-detail"><div class="venue-icon">🅿️</div><span>Paid parking on Franklin &amp; Oak St</span></div>
+            <div class="venue-detail"><div class="venue-icon">♿</div><span>Fully accessible, step-free entry</span></div>
+            <div class="venue-detail"><div class="venue-icon">📶</div><span>High-speed Wi-Fi throughout</span></div>
+          </div>
+        </div>
+        <div class="venue-map">
+          <div class="venue-map-grid"></div>
+          <div class="venue-map-pin">
+            <div>📍</div>
+            <div>201 Franklin St, San Francisco</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- REGISTER -->
+  <div class="register-section" id="register">
+    <div class="register-inner">
+      <div class="register-card">
+        <div class="register-card-bg"></div>
+        <h2 class="register-title">Register for<br>June 18</h2>
+        <p class="register-sub">Join us at SF Jazz for a day of conversations at the frontier of technology.</p>
+        <iframe
+          src="https://lu.ma/embed/event/q1tngaw7/simple"
+          width="100%"
+          height="560"
+          frameborder="0"
+          allowfullscreen
+          aria-hidden="false"
+          tabindex="0"
+          style="border-radius: 16px; margin-top: 8px; display: block;">
+        </iframe>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">Big Technology Live</div>
+    <ul class="footer-links">
+      <li><a href="#speakers">Speakers</a></li>
+      <li><a href="#schedule">Schedule</a></li>
+      <li><a href="#venue">Venue</a></li>
+      <li><a href="#register">Register</a></li>
+      <li><a href="mailto:hello@bigtechnologylive.com">Contact</a></li>
+    </ul>
+    <div class="footer-copy">© 2026 Big Technology Live. All rights reserved.</div>
+  </footer>
+
+</body>
+</html>
