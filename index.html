@@ -814,29 +814,56 @@
       nav { padding: 16px 20px; }
       .nav-links { display: none; }
 
-      .hero { padding: 120px 24px 200px; }
-      .hero-blob { width: 340px; height: 340px; right: -60px; opacity: 0.5; }
-      .hero-meta-block { right: 24px; bottom: 40px; }
-      .hero-meta-value { font-size: 18px; }
+      /* Hero: stack vertically, hide blob and meta block */
+      .hero {
+        padding: 100px 24px 60px;
+        min-height: auto;
+        align-items: flex-start;
+      }
+      .hero-blob { display: none; }
+      .hero-title { font-size: clamp(52px, 14vw, 80px); }
+      .hero-meta-block { display: none; }
+      .hero-eyebrow { font-size: 10px; }
+      .hero-actions { flex-direction: column; }
+      .hero-actions a { text-align: center; }
 
-      .about, .featured-wrap, .speakers-section,
-      .schedule-section, .venue-section, .register-section { padding: 72px 24px; }
+      /* About */
+      .about { padding: 56px 24px; text-align: left; }
+      .about-divider { margin: 20px 0; }
+      .about-title { font-size: clamp(28px, 7vw, 40px); }
+      .about-sub { font-size: 16px; }
 
+      /* Sections */
+      .featured-wrap, .venue-section, .register-section { padding: 56px 20px; }
+
+      /* Featured speaker card */
       .featured-card { grid-template-columns: 1fr; }
-      .featured-photo img { min-height: 300px; }
-      .featured-info { padding: 36px 28px; }
+      .featured-photo img { min-height: 280px; object-position: top; }
+      .featured-info { padding: 28px 24px 32px; }
+      .featured-name { font-size: 44px; }
 
+      /* Venue */
       .venue-card { grid-template-columns: 1fr; }
-      .venue-info { padding: 36px 28px; }
-      .venue-map { min-height: 180px; }
+      .venue-info { padding: 32px 24px; }
+      .venue-map { min-height: 240px; }
 
-      .schedule-item { grid-template-columns: 110px 1fr; }
+      /* Register */
+      .register-inner { padding: 0; }
+
+      /* Schedule */
+      .schedule-section { padding: 56px 20px; }
+      .schedule-item { grid-template-columns: 100px 1fr; gap: 12px; padding: 18px 16px; }
       .stype { display: none; }
 
-      .register-card { padding: 56px 28px; }
-
+      /* Footer */
       footer { flex-direction: column; padding: 36px 24px; text-align: center; }
       .footer-links { flex-wrap: wrap; justify-content: center; }
+    }
+
+    @media (max-width: 480px) {
+      .hero-title { font-size: 48px; }
+      .featured-name { font-size: 36px; }
+      .btn-primary, .btn-secondary { padding: 14px 28px; font-size: 15px; width: 100%; text-align: center; }
     }
   </style>
 </head>
@@ -1086,12 +1113,15 @@
             <div class="venue-detail"><div class="venue-icon">📶</div><span>High-speed Wi-Fi throughout</span></div>
           </div>
         </div>
-        <div class="venue-map">
-          <div class="venue-map-grid"></div>
-          <div class="venue-map-pin">
-            <div>📍</div>
-            <div>201 Franklin St, San Francisco</div>
-          </div>
+        <div class="venue-map" style="padding:0;">
+          <iframe
+            src="https://maps.google.com/maps?q=SFJAZZ+Center,201+Franklin+St,San+Francisco,CA+94102&t=&z=15&ie=UTF8&iwloc=&output=embed"
+            width="100%"
+            height="100%"
+            style="border:0; min-height: 320px; display:block; filter: grayscale(20%) contrast(1.1);"
+            allowfullscreen=""
+            loading="lazy">
+          </iframe>
         </div>
       </div>
     </div>
