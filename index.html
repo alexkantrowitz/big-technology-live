@@ -367,7 +367,7 @@
 
     .speakers-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 20px;
       margin-bottom: 32px;
     }
@@ -454,12 +454,33 @@
       border-radius: 999px;
     }
 
-    .speakers-more {
+    /* TBA / placeholder card */
+    .speaker-card-tba {
+      position: relative;
+      border-radius: var(--radius);
+      aspect-ratio: 1 / 1;
+      border: 2px dashed rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.03);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       text-align: center;
+      padding: 32px;
+      gap: 14px;
+    }
+
+    .speaker-card-tba-icon {
+      font-size: 32px;
+      opacity: 0.3;
+    }
+
+    .speaker-card-tba-text {
       font-size: 15px;
-      font-style: italic;
-      color: var(--dim);
-      margin-top: 8px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.35);
+      letter-spacing: -0.01em;
+      line-height: 1.4;
     }
 
     /* ── SCHEDULE ── */
@@ -779,6 +800,7 @@
 
       /* Speakers grid: 2 columns on tablet */
       .speakers-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+      .speaker-card-tba { aspect-ratio: 1 / 1; }
 
       /* Venue */
       .venue-card { grid-template-columns: 1fr; }
@@ -958,15 +980,6 @@
         </div>
 
         <div class="speaker-card">
-          <img src="lauren-goode-2.jpg" alt="Lauren Goode" />
-          <div class="speaker-overlay">
-            <div class="speaker-name">Lauren Goode</div>
-            <div class="speaker-role">Senior Writer · WIRED</div>
-            <div class="speaker-bio">Senior correspondent at WIRED covering all things Silicon Valley, including artificial intelligence, semiconductors, and tech's most interesting people.</div>
-          </div>
-        </div>
-
-        <div class="speaker-card">
           <span class="speaker-badge">Host</span>
           <img src="alex-kantrowitz.jpg" alt="Alex Kantrowitz" />
           <div class="speaker-overlay">
@@ -976,8 +989,21 @@
           </div>
         </div>
 
+        <div class="speaker-card">
+          <img src="lauren-goode-2.jpg" alt="Lauren Goode" />
+          <div class="speaker-overlay">
+            <div class="speaker-name">Lauren Goode</div>
+            <div class="speaker-role">Senior Writer · WIRED</div>
+            <div class="speaker-bio">Senior correspondent at WIRED covering all things Silicon Valley, including artificial intelligence, semiconductors, and tech's most interesting people.</div>
+          </div>
+        </div>
+
+        <div class="speaker-card-tba">
+          <div class="speaker-card-tba-icon">🎤</div>
+          <div class="speaker-card-tba-text">More speakers to be announced shortly</div>
+        </div>
+
       </div>
-      <div class="speakers-more">More speakers to be announced.</div>
     </div>
   </div>
 
