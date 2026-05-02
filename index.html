@@ -801,6 +801,8 @@
       /* Speakers grid: 2 columns on tablet */
       .speakers-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
       .speaker-card-tba { aspect-ratio: 1 / 1; }
+      .speaker-name { font-size: 15px; }
+      .speaker-role { font-size: 11px; }
 
       /* Venue */
       .venue-card { grid-template-columns: 1fr; }
@@ -822,8 +824,14 @@
 
     @media (max-width: 480px) {
       .hero-title { font-size: 48px; }
-      .featured-name { font-size: 36px; }
       .btn-primary, .btn-secondary { padding: 14px 28px; font-size: 15px; width: 100%; text-align: center; }
+
+      /* Single column speakers on mobile */
+      .speakers-grid { grid-template-columns: 1fr; gap: 12px; }
+      .speaker-overlay { padding: 60px 16px 16px; }
+      .speaker-name { font-size: 18px; }
+      .speaker-role { font-size: 13px; }
+      .speaker-card-tba-text { font-size: 14px; }
     }
   </style>
 </head>
@@ -1033,7 +1041,7 @@
           <div class="venue-name">Commonwealth Club</div>
           <div class="venue-address">110 The Embarcadero<br>San Francisco, CA 94105</div>
           <div class="venue-details">
-            <div class="venue-detail"><div class="venue-icon">🚇</div><span>BART accessible — Civic Center station</span></div>
+            <div class="venue-detail"><div class="venue-icon">🚇</div><span>BART accessible — Embarcadero station</span></div>
             <div class="venue-detail"><div class="venue-icon">🅿️</div><span>Paid parking at Embarcadero Center Garage</span></div>
             <div class="venue-detail"><div class="venue-icon">♿</div><span>Fully accessible, step-free entry</span></div>
             <div class="venue-detail"><div class="venue-icon">📶</div><span>High-speed Wi-Fi throughout</span></div>
