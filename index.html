@@ -282,6 +282,35 @@
 
     .about-sub strong { color: var(--gold); font-weight: 600; }
 
+    /* ── SPONSOR CALLOUT ── */
+    .sponsor-callout {
+      display: inline-block;
+      margin-top: 36px;
+      padding: 18px 32px;
+      border: 1px solid rgba(245,166,35,0.35);
+      border-radius: 10px;
+      background: rgba(245,166,35,0.06);
+      font-size: 15px;
+      color: rgba(255,255,255,0.7);
+      letter-spacing: 0.01em;
+      line-height: 1.5;
+    }
+    .sponsor-callout .sponsor-label {
+      display: block;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 6px;
+    }
+    .sponsor-callout a {
+      color: var(--gold);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .sponsor-callout a:hover { text-decoration: underline; }
+
     /* ── STATS ── */
     .stats-strip {
       display: flex;
@@ -902,9 +931,10 @@
     <p class="about-sub" style="margin-top: 16px;">
       Full agenda to come. Prices will rise as demand goes up so grab a ticket now to secure your spot.
     </p>
-    <p class="about-sub" style="margin-top: 16px;">
-      Interested in sponsoring? Write <a href="mailto:alex@bigtechnology.com?subject=Connecting%20re%3A%20Big%20Technology%20Live%206%2F18" style="color: var(--gold); text-decoration: none;">alex@bigtechnology.com</a>
-    </p>
+    <div class="sponsor-callout">
+      <span class="sponsor-label">Sponsorship</span>
+      Interested in sponsoring? Write <a href="mailto:alex@bigtechnology.com?subject=Connecting%20re%3A%20Big%20Technology%20Live%206%2F18">alex@bigtechnology.com</a>
+    </div>
   </div>
 
 
